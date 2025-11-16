@@ -1,6 +1,7 @@
 let Limite = 2500
 let SaldoAtualizado = Limite
 let SaldoInicial = Limite
+let SaldoUtilizado = 0
 
 let FormDespesa = document.getElementById("formdespesa")
 let ValorDespesa = document.getElementById("valordadespesa")
@@ -14,11 +15,12 @@ let LimiteUtilizado = document.getElementById("limiteutilizado")
 
 
 
-function AtualizarLimite(){
-    LimitedoCartao.innerHTML = "Limite Disponível: " + Limite
-    LimiteUtilizado.innerHTML = "Limite Utilizado: " + SaldoAtualizado
+function AtualizarDados(){
+    LimitedoCartao.innerHTML = "Limite Disponível: R$" + Limite
+    LimiteUtilizado.innerHTML = "Limite Utilizado: R$" + SaldoUtilizado
+    TotalSaldo.innerHTML = "R$" + SaldoAtualizado
 }
-AtualizarLimite()
+AtualizarDados()
 
 FormDespesa.onsubmit = (event) => {
 
@@ -46,7 +48,7 @@ function CreateDespesa (Despesa)  {
         ContainerDescricaoDespesa.append(ContainerNomeDespesa)
 
         let ContainerValorDespesa = document.createElement("p")
-        ContainerValorDespesa.textContent = Despesa.valor
+        ContainerValorDespesa.textContent = "R$" + Despesa.valor
         ContainerDescricaoDespesa.append(ContainerValorDespesa)
 
         let ContainerDetalheDespesa = document.createElement("div")
@@ -68,10 +70,11 @@ function AtualizarSaldo(Despesa) {
 
     if(Despesa.valor <= SaldoAtualizado){
     SaldoAtualizado = SaldoInicial - Despesa.valor
-    TotalSaldo.innerHTML = SaldoAtualizado
+    SaldoUtilizado = SaldoUtilizado + Number(Despesa.valor)
+    TotalSaldo.innerHTML = "R$" + SaldoAtualizado
     SaldoInicial = SaldoAtualizado
 
-    AtualizarLimite(SaldoAtualizado)       
+    AtualizarDados(SaldoUtilizado)       
 
     }
     else{
