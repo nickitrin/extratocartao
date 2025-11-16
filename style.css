@@ -13,7 +13,7 @@ body{
 .inserirdados{
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 41vw;
     background-color: #E2E0E0;
     padding: 32px;
 }
