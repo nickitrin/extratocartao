@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Extrato do cartão</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div>
+    <div class="inserirdados">
     <h1>Extrato do Cartão</h1>
 
     <img src="assets/credit-card.png" id="imagemcartao">
@@ -15,24 +18,27 @@
         <p id="limitedocartao"></p>
         <p id="limiteutilizado"></p>
     </div>
-    <div class="barra"></div>
+    <progress id="barradeprogresso" value="0" max="2500"></progress>
     
     <form action="" id="formdespesa">
         <label for="nomedadespesa">Nome da Despesa:</label>
-        <input type="text" id="nomedadespesa">
+        <input type="text" id="nomedadespesa" required>
         <label for="valordadespesa" >Valor da Despesa:</label>
-        <input type="text" id="valordadespesa" placeholder ="R$">
-        <label for="datadadespesa">Data da Despesa:</label>
-        <input type="date" name="" id="datadadespesa">
+        <input type="number" step="0.01"id="valordadespesa" placeholder ="R$" required>
+        <label for="datadadespesa" >Data da Despesa:</label>
+        <input type="date" name="" id="datadadespesa" required>
         <input type="submit" value="Adicionar Despesa" id="submit">
     </form>
     </div>
-    <div>
-    <div id="containerdespesa">
-        <h2>Histórico de Despesas:</h2>
-    </div>
-        <p>Saldo: </p>
-        <p id="totalsaldo"> </p>
+    <div id="historicodedespesas">
+        <div >
+            <p>Saldo: </p>
+            <p id="totalsaldo"> </p>
+            <h2>Histórico de Despesas:</h2>
+            <div id="transacoes">
+            </div>
+        </div>
+
     </div>
 
 </body>

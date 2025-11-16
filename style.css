@@ -1,32 +1,80 @@
 body{
-    background-color: #F7F7F7;
+    background-color: #EBE8E9;
     display: flex;
     width: 100%;
     flex-direction: row;
     margin: auto;
-    justify-content: space-around;
-    
-
+    padding: 16px 0;
+    justify-content: center;
+    align-content: center;
+    font-family: "Zalando Sans", sans-serif;
 }
+
+.inserirdados{
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    background-color: #E2E0E0;
+    padding: 32px;
+}
+
 #imagemcartao{
     width:128px;
 }
-
+#ContainerLimite{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+progress{
+    width: 100%;
+    background-color: #2FB170;
+    height: 4px;
+    margin: 10px 0 10px 0;
+}
 body form{
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background-color: #EDF5F1;
-    padding: 32px;
 }
 
 body form input, body form select{
     padding: 12px;
     font-size: 16px;
     border-radius: 4px;
-    border: 2px solid #DCFCEE;
+    border: 2px solid white;
 }
 body form #submit{
+    border: none;
     background-color: #2FB170;
 
+}
+#totalsaldo{
+    font-size: 20px;
+    color: #2FB170;
+}
+
+#historicodedespesas{
+    background-color:#edecec ;
+    padding: 32px;
+}
+#transacoes{
+    max-height: 65vh;
+    overflow:auto
+}
+#transacoes::-webkit-scrollbar {
+    display: none;
+}
+.ContainerDespesa{
+    display: flex;
+    flex-direction: row;
+    border-bottom:2px solid #DCFCEE ;
+    justify-content: space-between;
+}
+.ContainerDescricaoDespesa{
+    display: flex;
+    flex-direction: column;
+}
+.ContainerDetalheDespesa{
+    display: flex;
 }

@@ -6,19 +6,17 @@ let SaldoUtilizado = 0
 let FormDespesa = document.getElementById("formdespesa")
 let ValorDespesa = document.getElementById("valordadespesa")
 let NomeDespesa = document.getElementById("nomedadespesa")
-let ContainerDespesa = document.getElementById("containerdespesa")
 let DataDespesa = document.getElementById("datadadespesa")
-
+let Transacoes = document.getElementById("transacoes")
 let TotalSaldo = document.getElementById("totalsaldo")
 let LimitedoCartao = document.getElementById("limitedocartao")
 let LimiteUtilizado = document.getElementById("limiteutilizado")
-
-
+let BarraDeProgresso = document.getElementById("barradeprogresso")
 
 function AtualizarDados(){
     LimitedoCartao.innerHTML = "Limite Disponível: R$" + Limite
-    LimiteUtilizado.innerHTML = "Limite Utilizado: R$" + SaldoUtilizado
-    TotalSaldo.innerHTML = "R$" + SaldoAtualizado
+    LimiteUtilizado.innerHTML = "Limite Utilizado: R$" + SaldoUtilizado.toFixed(2)
+    TotalSaldo.innerHTML = "R$" + SaldoAtualizado.toFixed(2)
 }
 AtualizarDados()
 
@@ -39,6 +37,11 @@ FormDespesa.onsubmit = (event) => {
 
 function CreateDespesa (Despesa)  {
     try{
+
+        let ContainerDespesa = document.createElement("div")
+        ContainerDespesa.classList.add("ContainerDespesa")
+        Transacoes.append(ContainerDespesa)
+
         let ContainerDescricaoDespesa = document.createElement("div")
         ContainerDescricaoDespesa.classList.add("ContainerDescricaoDespesa")
         ContainerDespesa.append(ContainerDescricaoDespesa)
@@ -58,6 +61,7 @@ function CreateDespesa (Despesa)  {
         let ContainerDataDespesa = document.createElement("p")
         ContainerDataDespesa.textContent = Despesa.data
         ContainerDetalheDespesa.append(ContainerDataDespesa)
+
         
     }
     catch(error){
@@ -72,9 +76,10 @@ function AtualizarSaldo(Despesa) {
     SaldoAtualizado = SaldoInicial - Despesa.valor
     SaldoUtilizado = SaldoUtilizado + Number(Despesa.valor)
     TotalSaldo.innerHTML = "R$" + SaldoAtualizado
-    SaldoInicial = SaldoAtualizado
+    SaldoInicial = SaldoAtualizado.toFixed(2)
 
-    AtualizarDados(SaldoUtilizado)       
+    AtualizarDados(SaldoUtilizado)     
+    BarraDeProgresso.value = SaldoUtilizado.toFixed(2) 
 
     }
     else{
